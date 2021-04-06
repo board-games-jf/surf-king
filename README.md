@@ -20,3 +20,9 @@ Enter on container:
 $ docker-compose exec dev bash
 ```
 
+### Run app
+
+```bash
+$ cd src/
+$ yarn dev
+```
