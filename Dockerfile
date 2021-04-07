@@ -9,4 +9,6 @@ COPY . .
 
 RUN git config core.autocrlf true
 
-EXPOSE 3000
+RUN npm i @types/node boardgame.io
+
+EXPOSE 3000, 8000
