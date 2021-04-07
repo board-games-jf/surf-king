@@ -5,11 +5,11 @@
 ## Development
 
 ### Stack
-- boardgame.io
-- Docker
-- Next.js
-- Node 14
-- TypeScript
+- [boardgame.io](https://boardgame.io/)
+- [Docker](https://www.docker.com/)
+- [Next.js](https://nextjs.org/)
+- [Node](https://nodejs.org/en/) 14
+- [TypeScript](https://www.typescriptlang.org/)
 
 ### Setup using docker
 
