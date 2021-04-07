@@ -9,7 +9,6 @@
 - Docker
 - Next.js
 - Node 14
-- React
 - typescript
 
 ### Setup using docker
