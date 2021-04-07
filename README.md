@@ -9,7 +9,7 @@
 - Docker
 - Next.js
 - Node 14
-- typescript
+- TypeScript
 
 ### Setup using docker
 
