@@ -5,10 +5,12 @@
 ## Development
 
 ### Stack
-- Node 14
-- Next.js
-- typescript
 - boardgame.io
+- Docker
+- Next.js
+- Node 14
+- React
+- typescript
 
 ### Setup using docker
 
