@@ -56,4 +56,4 @@ The `pages/api` directory is mapped to `/api/*`. Files in this directory are tre
 
 ## Contributors
 
-Checkout [Contribute](./CONTRIBUTING.md) for details.
+Checkout [Contribute](CONTRIBUTING.md) for details.
