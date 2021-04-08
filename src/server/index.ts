@@ -1,7 +1,7 @@
 import { Server } from 'boardgame.io/server';
-import { DEFAULT_API_PORT, DEFAULT_PORT } from "../config/index.ts";
+import { DEFAULT_API_PORT, DEFAULT_PORT } from "../config";
 
-// import SurfKingGame from './game'
+// import SurfKingGame from '../game/SurfKingGame.ts'
 
 const PORT = Number(process.env.PORT || DEFAULT_PORT);
 const API_PORT = Number(process.env.API_PORT || DEFAULT_API_PORT);

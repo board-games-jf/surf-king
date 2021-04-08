@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "server": "node -r esm src/server/index.ts"
+    "build:server": "tsc -p tsconfig.server.json",
+    "start:server": "node -r esm build/server/index.js",
+    "server": "yarn build:server && yarn start:server"
   },
   "dependencies": {
     "@types/node": "^14.14.37",
