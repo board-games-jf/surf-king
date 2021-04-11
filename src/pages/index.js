@@ -1,12 +1,28 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 
+import board from "../Board"
+import { SurfKingGame } from "../game"
+import { Client } from 'boardgame.io/react';
+import { DEFAULT_DEBUG } from '../config';
+
+const SurfKingClient = Client({
+  game: SurfKingGame,
+  board,
+  debug: process.env.DEBUG || DEFAULT_DEBUG,
+  // multiplayer: { server: process.env.REACT_APP_SERVER },
+});
+
 export default function Home() {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Create Next App</title>
+        <title>Surf King Game</title>
         <link rel="icon" href="/favicon.ico" />
+        <meta
+          name="description"
+          content="Surf King Game"
+        />
       </Head>
 
       <main className={styles.main}>
@@ -18,6 +34,10 @@ export default function Home() {
           Get started by editing{' '}
           <code className={styles.code}>pages/index.js</code>
         </p>
+
+        <div>
+          <SurfKingClient playerID="0" />
+        </div>
 
         <div className={styles.grid}>
           <a href="https://nextjs.org/docs" className={styles.card}>
