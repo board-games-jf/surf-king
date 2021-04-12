@@ -1,7 +1,7 @@
 version: "3.8"
 
 services:
-  dev:
+  server:
     build:
       context: .
       dockerfile: Dockerfile
@@ -14,3 +14,16 @@ services:
       - 8080:8080
     stdin_open: true
     tty: true
+  postgres:
+    image: postgres:12.6
+    environment:
+      POSTGRES_USER: "surfking"
+      POSTGRES_PASSWORD: "Nazare@21#test"
+      POSTGRES_DB: "surfking"
+    ports:
+      - 15432:5432
+    volumes:
+      - data:/var/lib/postgresql/data
+
+volumes:
+  data:
