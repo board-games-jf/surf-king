@@ -9,6 +9,6 @@ COPY . .
 
 RUN git config core.autocrlf true
 
-RUN npm i @types/node boardgame.io
+RUN yarn add @types/node boardgame.io
 
 EXPOSE 3000 8000 8080
