@@ -1,10 +1,13 @@
 import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import Link from 'next/link';
+import { signIn, signOut, useSession } from 'next-auth/client';
 
 import board from "../Board"
 import { SurfKingGame } from "../game"
 import { Client } from 'boardgame.io/react';
 import { DEFAULT_DEBUG } from '../config';
+
+import styles from '../styles/Home.module.css'
 
 const SurfKingClient = Client({
   game: SurfKingGame,
@@ -14,6 +17,8 @@ const SurfKingClient = Client({
 });
 
 export default function Home() {
+  const [session, loading] = useSession();
+
   return (
     <div className={styles.container}>
       <Head>
@@ -38,6 +43,36 @@ export default function Home() {
         <div>
           <SurfKingClient playerID="0" />
         </div>
+
+        {!session && (
+          <div>
+            <Link href="/api/auth/signin">
+              <button
+                onClick={(e) => {
+                  e.preventDefault();
+                  signIn();
+                }}
+              >
+                Sign In
+              </button>
+            </Link>
+          </div>
+        )}
+        {session && (
+          <div>
+            <Link href="/api/auth/signin">
+              <button
+                onClick={(e) => {
+                  e.preventDefault();
+                  signOut();
+                }}
+              >
+                Sign Out
+              </button>
+            </Link>
+            <span>{session.user.email}</span>
+          </div>
+        )}
 
         <div className={styles.grid}>
           <a href="https://nextjs.org/docs" className={styles.card}>

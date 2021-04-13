@@ -9,6 +9,7 @@ conduct](CODE_OF_CONDUCT.md).
 - [Ports and endpoints](#ports-and-endpoints)
 - [Setup your machine](#setup-your-machine)
   - [Using docker](#using-docker)
+- [Generate database](#generate-database)
 - [Run server](#run-server)
 - [Publishing the harbor image](#publishing-the-harbor-image)
 - [Create a commit](#create-a-commit)
@@ -25,11 +26,12 @@ conduct](CODE_OF_CONDUCT.md).
 
 ## Ports and endpoints
 
-| Port | Endpoint(s) | Description         |
-| ---- | ----------- | ------------------- |
-| 3000 | /           | Next.js server      |
-| 8000 | /           | boardgame.io server |
-| 8080 | /           | boardgame.io lobby  |
+| Port | Endpoint(s) | Description          |
+| ----- | ----------- | ------------------- |
+| 3000  | /           | Next.js server      |
+| 8000  | /           | boardgame.io server |
+| 8080  | /           | boardgame.io lobby  |
+| 16543 | /           | pgAdmin dashboard   |
 
 ## Setup your machine
 
@@ -48,6 +50,14 @@ docker-compose up -d
 Enter on container:
 ```bash
 docker-compose exec server bash
+```
+
+## Generate database
+
+### Using docker
+
+```bash
+cat .\data\auth-schema.sql | docker-compose exec -i postgres psql -U surfking -d surfking
 ```
 
 ## Run server
