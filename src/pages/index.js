@@ -60,7 +60,7 @@ export default function Home() {
         )}
         {session && (
           <div>
-            <Link href="/api/auth/signin">
+            <Link href="/api/auth/signout">
               <button
                 onClick={(e) => {
                   e.preventDefault();
