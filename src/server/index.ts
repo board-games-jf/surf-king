@@ -1,10 +1,10 @@
 import { Server } from 'boardgame.io/server';
-import { DEFAULT_API_PORT, DEFAULT_PORT } from "../config";
+import { DEFAULT_LOBBY_PORT, DEFAULT_SERVER_PORT } from "../config";
 
 import { SurfKingGame } from "../game"
 
-const PORT = Number(process.env.PORT || DEFAULT_PORT);
-const API_PORT = Number(process.env.API_PORT || DEFAULT_API_PORT);
+const PORT = Number(process.env.PORT || DEFAULT_SERVER_PORT);
+const API_PORT = Number(process.env.API_PORT || DEFAULT_LOBBY_PORT);
 
 const server = Server({ games: [SurfKingGame] });
 
