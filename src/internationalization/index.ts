@@ -11,6 +11,10 @@ export const SUPPORT_LOCALES = [
         name: 'Português',
         value: 'pt-BR',
     },
+    {
+        name: 'Cearensês',
+        value: 'ce-BR',
+    },
 ]
 
 export const loadLanguage = async (): Promise<boolean> => {
