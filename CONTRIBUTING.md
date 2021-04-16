@@ -62,19 +62,19 @@ cat .\data\auth-schema.sql | docker-compose exec -i postgres psql -U surfking -d
 
 ## Run server
 
-Prepare environment:
+Install dependencies:
 ```bash
 yarn
-```
-
-Run server:
-```bash
-yarn run server
 ```
 
 Run app:
 ```bash
 yarn dev
+```
+
+Run server:
+```bash
+yarn run server
 ```
 
 ## Create a commit
