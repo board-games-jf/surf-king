@@ -21,7 +21,8 @@
     "downlevelIteration": true
   },
   "include": [
-    "src"
+    "src",
+    "public/locales"
   ],
   "exclude": [
     "node_modules"
