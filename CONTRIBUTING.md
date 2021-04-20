@@ -107,7 +107,7 @@ You can follow the documentation on
 
 - go to a new branch `git checkout -b feat/my-feature`
 - make your changes
-- run tests and linter again `yarn type-check && yarn lint .`
+- run tests and linter again `yarn linter`
 - Push your branch to [`surf-king`](https://github.com/board-games-jf/surf-king) repository
 - Open PR against the main branch. 🏄
 

@@ -6,8 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "type-check": "tsc --project tsconfig.json --pretty --noEmit",
-    "lint": "eslint --ext js,jsx,ts,tsx --fix",
+    "type-check:linter": "tsc --project tsconfig.json --pretty --noEmit",
+    "lint:linter": "eslint --ext js,jsx,ts,tsx --fix",
+    "linter": "yarn type-check:linter && yarn lint:linter .",
     "build:server": "tsc -p tsconfig.server.json",
     "start:server": "node -r esm build/server/index.js",
     "server": "yarn build:server && yarn start:server"

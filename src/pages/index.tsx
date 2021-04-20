@@ -60,18 +60,32 @@ export default function Home(): ReactNode {
 
   return (
     !loading && (
-      <div>
+      <div
+        style={{
+          minHeight: '100vh',
+          padding: '0 0.5rem',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}
+      >
         <Head>
           <title>Surf King Game</title>
           <link rel="icon" href="/favicon.ico" />
           <meta name="description" content="Surf King Game" />
         </Head>
 
-        <main>
-          <div>
-            <SurfKingClient playerID="0" />
-          </div>
-
+        <main
+          style={{
+            padding: '5rem 0',
+            flex: 1,
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}
+        >
           {renderLocaleSelector()}
 
           {!session && (
@@ -100,7 +114,12 @@ export default function Home(): ReactNode {
                   {intlAuthenticationSignOut()}
                 </button>
               </Link>
-              <span>{session.user.email}</span>
+              <div>
+                <span>{session.user.email}</span>
+              </div>
+              <div>
+                <SurfKingClient playerID="0" />
+              </div>
             </div>
           )}
         </main>
