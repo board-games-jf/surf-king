@@ -1,5 +1,5 @@
 export interface Obstacle {
-    name: string;
-};
+  name: string
+}
 
-export const SharkObstacle = { name: "Shark" };
+export const SharkObstacle = { name: 'Shark' }
