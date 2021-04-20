@@ -1,6 +1,6 @@
 export interface Card {
-    name: string;
-};
+  name: string
+}
 
-export const SharkCard = { Name: "Shark" }
-export const EnergyCard = { Name: "Energy" }
+export const SharkCard = { Name: 'Shark' }
+export const EnergyCard = { Name: 'Energy' }

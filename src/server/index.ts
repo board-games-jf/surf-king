@@ -1,18 +1,18 @@
-import { Server } from 'boardgame.io/server';
-import { DEFAULT_LOBBY_PORT, DEFAULT_SERVER_PORT } from "../config";
+import { Server } from 'boardgame.io/server'
+import { DEFAULT_LOBBY_PORT, DEFAULT_SERVER_PORT } from '../config'
 
-import { SurfKingGame } from "../game"
+import { SurfKingGame } from '../game'
 
-const PORT = Number(process.env.PORT || DEFAULT_SERVER_PORT);
-const API_PORT = Number(process.env.API_PORT || DEFAULT_LOBBY_PORT);
+const PORT = Number(process.env.PORT || DEFAULT_SERVER_PORT)
+const API_PORT = Number(process.env.API_PORT || DEFAULT_LOBBY_PORT)
 
-const server = Server({ games: [SurfKingGame] });
+const server = Server({ games: [SurfKingGame] })
 
 const lobbyConfig = {
-    apiPort: API_PORT,
-    apiCallback: () => console.log(`Running Lobby API on port ${API_PORT}...`),
-};
+  apiPort: API_PORT,
+  apiCallback: () => console.log(`Running Lobby API on port ${API_PORT}...`),
+}
 
 server.run({ port: PORT, lobbyConfig }, () => {
-    console.log(`Serving at: http://localhost:${PORT}/`);
+  console.log(`Serving at: http://localhost:${PORT}/`)
 })
