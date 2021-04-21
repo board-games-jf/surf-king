@@ -3,82 +3,102 @@ import { signIn, signOut, useSession } from 'next-auth/client'
 
 import { intlAuthenticationSignIn, intlAuthenticationSignOut, SUPPORT_LOCALES } from '../../internationalization'
 
-import { Select } from 'antd'
 import { valueType } from 'antd/lib/statistic/utils'
+import { Button, Col, Image, Menu, Row, Select } from 'antd'
 
 const { Option } = Select
 
 const Header = (): JSX.Element => {
   const [session] = useSession()
 
+  const onSelectLocale = (value: valueType): void => {
+    window.location.search = `?lang=${value}`
+  }
+
   const renderLocaleSelector = (): JSX.Element => {
     return (
-      <Select defaultValue="" style={{ width: 120 }} onChange={onSelectLocale}>
+      <Select style={{ width: 100 }} defaultValue="" onChange={onSelectLocale}>
         {SUPPORT_LOCALES.map((locale) => (
-          <Option key={locale.name} value={locale.value} disabled>
+          <Option key={locale.name} value={locale.value}>
             {locale.name}
           </Option>
         ))}
       </Select>
-      // <select onBlur={onSelectLocale} defaultValue="">
-      //   <option value="" disabled>
-      //     Change Language
-      //   </option>
-      //   {SUPPORT_LOCALES.map((locale) => (
-      //     <option key={locale.value} value={locale.value}>
-      //       {locale.name}
-      //     </option>
-      //   ))}
-      // </select>
     )
   }
 
-  const onSelectLocale = (value: valueType): void => {
-    // const lang = e.target.value
-    window.location.search = `?lang=${value}`
+  const onSignInCliked = (): void => {
+    signIn()
+  }
+
+  const onSignOutCliked = (): void => {
+    signOut()
   }
 
   return (
-    <header>
-      <noscript>
-        <style>{`.nojs-show { opacity: 1; top: 0; }`}</style>
-      </noscript>
-
-      {renderLocaleSelector()}
-
-      {!session && (
-        <div>
-          <Link href="/api/auth/signin">
-            <button
-              onClick={(e) => {
-                e.preventDefault()
-                signIn()
-              }}
-            >
-              {intlAuthenticationSignIn()}
-            </button>
-          </Link>
-        </div>
-      )}
-
-      {session && (
-        <div>
-          <Link href="/api/auth/signout">
-            <button
-              onClick={(e) => {
-                e.preventDefault()
-                signOut()
-              }}
-            >
-              {intlAuthenticationSignOut()}
-            </button>
-          </Link>
-          <div>
-            <span>{session.user.email}</span>
+    <div>
+      <Row>
+        <Col span={5}>
+          <div
+            style={{
+              display: 'flex',
+              flexWrap: 'nowrap',
+              justifyContent: 'flex-start',
+              alignItems: 'center',
+            }}
+          >
+            <Image src="/media/logo.png" width={100} />
+            <h2>Surf King</h2>
           </div>
-        </div>
-      )}
-    </header>
+        </Col>
+
+        <Col span={14}>
+          <Menu mode="horizontal" defaultSelectedKeys={['1']}>
+            <Menu.Item key="1">nav 1</Menu.Item>
+            <Menu.Item key="2">nav 2</Menu.Item>
+            <Menu.Item key="3">nav 3</Menu.Item>
+          </Menu>
+        </Col>
+
+        <Col span={5}>
+          <div
+            style={{
+              display: 'flex',
+              flexWrap: 'nowrap',
+              justifyContent: 'flex-end',
+              alignItems: 'center',
+            }}
+          >
+            {!session && (
+              <div>
+                <Link href="/api/auth/signin">
+                  <Button type="primary" onClick={onSignInCliked}>
+                    {intlAuthenticationSignIn()}
+                  </Button>
+                </Link>
+              </div>
+            )}
+
+            {/* {session && (
+              <div>
+                <span>{session.user.email}</span>
+              </div>
+            )} */}
+            {session && (
+              <div>
+                <Link href="/api/auth/signout">
+                  <Button type="primary" onClick={onSignOutCliked}>
+                    {intlAuthenticationSignOut()}
+                  </Button>
+                </Link>
+              </div>
+            )}
+
+            {renderLocaleSelector()}
+          </div>
+        </Col>
+      </Row>
+    </div>
   )
 }
 
