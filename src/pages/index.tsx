@@ -6,7 +6,7 @@ import { signIn, signOut, useSession } from 'next-auth/client'
 import board from '../board'
 import { SurfKingGame } from '../game'
 import { Client } from 'boardgame.io/react'
-import { DEFAULT_DEBUG } from '../config'
+import { DEFAULT_DEBUG } from '../app-constants'
 
 import {
   intlAuthenticationSignIn,
