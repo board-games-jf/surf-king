@@ -8,6 +8,8 @@ import { Button, Col, Image, Menu, Row, Select } from 'antd'
 
 const { Option } = Select
 
+import { Logo } from './styles'
+
 const Header = (): JSX.Element => {
   const [session] = useSession()
 
@@ -39,17 +41,10 @@ const Header = (): JSX.Element => {
     <div>
       <Row>
         <Col span={5}>
-          <div
-            style={{
-              display: 'flex',
-              flexWrap: 'nowrap',
-              justifyContent: 'flex-start',
-              alignItems: 'center',
-            }}
-          >
+          <Logo>
             <Image src="/media/logo.png" width={100} />
             <h2>Surf King</h2>
-          </div>
+          </Logo>
         </Col>
 
         <Col span={14}>
