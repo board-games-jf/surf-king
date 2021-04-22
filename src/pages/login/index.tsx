@@ -1,10 +1,21 @@
 import Image from 'next/image'
+import Media from 'react-media'
+import { GLOBAL_MEDIA_QUERIES } from '../../app-constants'
 
 const Login = (): JSX.Element => {
   return (
-    <div>
-      <Image src="/media/login-bg.png" alt="background" layout="fill" objectFit="cover" quality={100} />
-    </div>
+    <Media queries={GLOBAL_MEDIA_QUERIES}>
+      {(matches) => (
+        <>
+          {matches.small && (
+            <Image src="/media/login-bg-small.png" alt="background" layout="fill" objectFit="cover" quality={100} />
+          )}
+          {!matches.small && (
+            <Image src="/media/login-bg.png" alt="background" layout="fill" objectFit="cover" quality={100} />
+          )}
+        </>
+      )}
+    </Media>
   )
 }
 

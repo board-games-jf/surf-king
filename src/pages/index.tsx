@@ -6,11 +6,11 @@ import { loadLanguage } from '../internationalization'
 
 import Login from './login'
 import Lobby from './lobby'
-import HeaderContent from '../components/header'
+import Header from '../components/header'
 
 import { Layout } from 'antd'
 
-const { Header, Content } = Layout
+const { Content } = Layout
 
 export default function Home(): ReactNode {
   const [session] = useSession()
@@ -30,9 +30,7 @@ export default function Home(): ReactNode {
   return (
     !loading && (
       <Layout>
-        <Header style={{ position: 'fixed', zIndex: 1, width: '100%', background: 'white', height: 100 }}>
-          <HeaderContent />
-        </Header>
+        <Header />
 
         <Content>
           {!session && <Login />}
