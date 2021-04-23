@@ -1,5 +1,6 @@
 import { Battle, Events, Profile, Ranking } from './icons'
 import { Avatar, Image } from 'antd'
+import { intlValue, TITLE_BATTLE, TITLE_EVENTS, TITLE_PROFILE, TITLE_RANKING } from '../internationalization'
 
 export interface IAction {
   icon: React.ReactNode
@@ -12,25 +13,25 @@ const actions = (userImage: string | undefined, iconSize = 32): IAction[] => {
   return [
     {
       icon: Events(iconSize),
-      title: 'Events',
+      title: intlValue(TITLE_EVENTS),
       name: 'events',
       url: 'events',
     },
     {
       icon: Battle(iconSize),
-      title: 'Battle',
+      title: intlValue(TITLE_BATTLE),
       name: 'battle',
       url: 'battle',
     },
     {
       icon: Ranking(iconSize),
-      title: 'Ranking',
+      title: intlValue(TITLE_RANKING),
       name: 'ranking',
       url: 'ranking',
     },
     {
       icon: userImage ? <Avatar size={40} src={<Image src={userImage} preview={false} />} /> : Profile(iconSize),
-      title: 'Profile',
+      title: intlValue(TITLE_PROFILE),
       name: 'profile',
       url: 'profile',
     },

@@ -1,6 +1,8 @@
+import { Button } from 'antd'
 import Image from 'next/image'
 import Media from 'react-media'
 import { GLOBAL_MEDIA_QUERIES } from '../../app-constants'
+import { intlValue, PLAY_MODE_LOCAL } from '../../internationalization'
 
 const Login = (): JSX.Element => {
   return (

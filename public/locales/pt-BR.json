@@ -1,4 +1,10 @@
 {
     "authentication.signin": "Entrar",
-    "authentication.signout": "Sair"
+    "authentication.signout": "Sair",
+    "play.mode.local": "Modo local",
+    "play.mode.online": "Modo online",
+    "title.battle": "Batalha",
+    "title.events": "Eventos",
+    "title.profile": "Perfil",
+    "title.ranking": "Troféus"
 }

@@ -1,4 +1,10 @@
 {
-    "authentication.signin": "Sing In",
-    "authentication.signout": "Sing Out"
+    "authentication.signin": "Sign In",
+    "authentication.signout": "Sign Out",
+    "play.mode.local": "Local mode",
+    "play.mode.online": "Online mode",
+    "title.battle": "Battle",
+    "title.events": "Events",
+    "title.profile": "Profile",
+    "title.ranking": "Ranking"
 }

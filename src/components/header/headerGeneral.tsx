@@ -2,7 +2,7 @@ import { FC } from 'react'
 import Link from 'next/link'
 import { useSession } from 'next-auth/client'
 
-import { intlAuthenticationSignIn, intlAuthenticationSignOut, SUPPORT_LOCALES } from '../../internationalization'
+import { AUTHENTICATION_SIGNIN, AUTHENTICATION_SIGNOUT, intlValue, SUPPORT_LOCALES } from '../../internationalization'
 
 import { Avatar, Button, Col, Image, Menu, Row, Select } from 'antd'
 import { valueType } from 'antd/lib/statistic/utils'
@@ -64,8 +64,8 @@ const HeaderGeneral: FC<IProps> = (props): JSX.Element => {
             {!session && (
               <div>
                 <Link href="/api/auth/signin">
-                  <Button type="primary" onClick={props.onSignInClicked}>
-                    {intlAuthenticationSignIn()}
+                  <Button type="primary" shape="round" onClick={props.onSignInClicked}>
+                    {intlValue(AUTHENTICATION_SIGNIN)}
                   </Button>
                 </Link>
               </div>
@@ -77,10 +77,9 @@ const HeaderGeneral: FC<IProps> = (props): JSX.Element => {
                 {userImage && <Avatar size={40} src={<Image src={userImage} preview={false} />} />}
 
                 <div style={{ marginRight: 8 }}></div>
-
                 <Link href="/api/auth/sgnout">
-                  <Button type="primary" onClick={props.onSignOutClicked}>
-                    {intlAuthenticationSignOut()}
+                  <Button type="primary" shape="round" onClick={props.onSignOutClicked}>
+                    {intlValue(AUTHENTICATION_SIGNOUT)}
                   </Button>
                 </Link>
               </>
