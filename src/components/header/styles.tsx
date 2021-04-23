@@ -32,7 +32,7 @@ const EllipseBackground = styled.div({
   paddingTop: 60,
   borderRadius: '50%',
   background: 'white',
-  filter: 'drop-shadow(0 4mm 4mm rgba(0, 0, 0, 25))',
+  boxShadow: '0px 0px 8px rgba(0, 0, 0, 25)',
 
   display: 'flex',
   flexWrap: 'nowrap',
