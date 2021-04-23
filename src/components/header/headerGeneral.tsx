@@ -22,7 +22,7 @@ interface IProps {
 const HeaderGeneral: FC<IProps> = (props): JSX.Element => {
   const [session] = useSession()
 
-  const userImage = session?.user.image
+  const userImage = session?.user?.image
 
   const renderLocaleSelector = (): JSX.Element => {
     return (
@@ -36,7 +36,7 @@ const HeaderGeneral: FC<IProps> = (props): JSX.Element => {
     )
   }
 
-  const menuItems = actions(session?.user.image || undefined, 18)
+  const menuItems = actions(session?.user?.image || undefined, 18)
   menuItems.splice(-1, 1)
 
   return (

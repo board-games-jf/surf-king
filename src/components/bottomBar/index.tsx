@@ -7,7 +7,7 @@ import { GLOBAL_MEDIA_QUERIES } from '../../app-constants'
 const BottomBar = (): JSX.Element => {
   const [session] = useSession()
 
-  const tabs = actions(session?.user.image || undefined)
+  const tabs = actions(session?.user?.image || '')
 
   return (
     <Media queries={GLOBAL_MEDIA_QUERIES}>
