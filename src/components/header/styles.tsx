@@ -5,11 +5,11 @@ const HeaderContent = styled.div({
   zIndex: 1,
   width: '100%',
   background: 'white',
-  height: 100,
 })
 
 const LoginArea = styled.div({
   display: 'flex',
+  height: 100,
   flexWrap: 'nowrap',
   justifyContent: 'center',
   alignItems: 'center',
@@ -17,6 +17,7 @@ const LoginArea = styled.div({
 
 const LogoArea = styled.div({
   display: 'flex',
+  height: 100,
   flexWrap: 'nowrap',
   justifyContent: 'center',
   alignItems: 'center',

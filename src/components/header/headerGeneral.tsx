@@ -4,10 +4,12 @@ import { useSession } from 'next-auth/client'
 
 import { intlAuthenticationSignIn, intlAuthenticationSignOut, SUPPORT_LOCALES } from '../../internationalization'
 
-import { Button, Col, Image, Menu, Row, Select } from 'antd'
+import { Avatar, Button, Col, Image, Menu, Row, Select } from 'antd'
 import { valueType } from 'antd/lib/statistic/utils'
+import { UserOutlined } from '@ant-design/icons'
 
 import { HeaderContent, LoginArea, LogoArea } from './styles'
+import actions from '../../app-constants/actions'
 
 const { Option } = Select
 
@@ -19,6 +21,8 @@ interface IProps {
 
 const HeaderGeneral: FC<IProps> = (props): JSX.Element => {
   const [session] = useSession()
+
+  const userImage = session?.user.image
 
   const renderLocaleSelector = (): JSX.Element => {
     return (
@@ -32,21 +36,26 @@ const HeaderGeneral: FC<IProps> = (props): JSX.Element => {
     )
   }
 
+  const menuItems = actions(session?.user.image || undefined, 18)
+  menuItems.splice(-1, 1)
+
   return (
     <HeaderContent>
       <Row>
         <Col span={5}>
           <LogoArea>
-            <Image src="/media/logo.png" width={100} />
+            <Image src="/media/logo.png" width={100} preview={false} />
             <h2>Surf King</h2>
           </LogoArea>
         </Col>
 
         <Col span={14}>
-          <Menu mode="horizontal" defaultSelectedKeys={['1']}>
-            <Menu.Item key="1">nav 1</Menu.Item>
-            <Menu.Item key="2">nav 2</Menu.Item>
-            <Menu.Item key="3">nav 3</Menu.Item>
+          <Menu style={{ lineHeight: '100px' }} mode="horizontal" defaultSelectedKeys={[menuItems[0].name]}>
+            {menuItems.map((item) => (
+              <Menu.Item key={item.name} icon={item.icon}>
+                {item.title}
+              </Menu.Item>
+            ))}
           </Menu>
         </Col>
 
@@ -63,15 +72,21 @@ const HeaderGeneral: FC<IProps> = (props): JSX.Element => {
             )}
 
             {session && (
-              <div>
-                {/* <span>{session.user.email}</span> */}
-                <Link href="/api/auth/signout">
+              <>
+                {!userImage && <Avatar style={{ background: '#CCCCCC' }} size={40} icon={<UserOutlined />} />}
+                {userImage && <Avatar size={40} src={<Image src={userImage} preview={false} />} />}
+
+                <div style={{ marginRight: 8 }}></div>
+
+                <Link href="/api/auth/sgnout">
                   <Button type="primary" onClick={props.onSignOutClicked}>
                     {intlAuthenticationSignOut()}
                   </Button>
                 </Link>
-              </div>
+              </>
             )}
+
+            <div style={{ marginRight: 8 }}></div>
 
             {renderLocaleSelector()}
           </LoginArea>

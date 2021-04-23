@@ -10,8 +10,6 @@ import Header from '../components/header'
 
 import { Layout } from 'antd'
 import BottomBar from '../components/bottomBar'
-import { GLOBAL_MEDIA_QUERIES } from '../app-constants'
-import Media from 'react-media'
 
 const { Content } = Layout
 
@@ -40,7 +38,7 @@ export default function Home(): ReactNode {
           {session && <Lobby />}
         </Content>
 
-        {session && <Media queries={GLOBAL_MEDIA_QUERIES}>{(matches) => matches.small && <BottomBar />}</Media>}
+        <BottomBar />
       </Layout>
     )
   )

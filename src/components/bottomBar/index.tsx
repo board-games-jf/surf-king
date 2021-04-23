@@ -1,72 +1,50 @@
-import { StarOutlined, TrophyOutlined, UserOutlined, ThunderboltOutlined } from '@ant-design/icons'
+import { useSession } from 'next-auth/client'
+import { BottomBarItem } from './styles'
+import actions from '../../app-constants/actions'
+import Media from 'react-media'
+import { GLOBAL_MEDIA_QUERIES } from '../../app-constants'
 
 const BottomBar = (): JSX.Element => {
-  const tabs = [
-    {
-      icon: <StarOutlined style={{ fontSize: 32 }} />,
-      title: 'Events',
-      name: 'events',
-      url: 'events',
-    },
-    {
-      icon: <ThunderboltOutlined style={{ fontSize: 32 }} />,
-      title: 'Battle',
-      name: 'battle',
-      url: 'battle',
-    },
-    {
-      icon: <TrophyOutlined style={{ fontSize: 32 }} />,
-      title: 'Ranking',
-      name: 'ranking',
-      url: 'ranking',
-    },
-    {
-      icon: <UserOutlined style={{ fontSize: 32 }} />,
-      title: 'Perfil',
-      name: 'profile',
-      url: 'profile',
-    },
-  ]
+  const [session] = useSession()
+
+  const tabs = actions(session?.user.image || undefined)
 
   return (
-    <div
-      style={{
-        position: 'fixed',
-        bottom: 0,
-        width: '100%',
-        backgroundColor: '#fff',
-        boxShadow: '0px 0px 8px #888',
-      }}
-    >
-      <div
-        style={{
-          display: 'flex',
-          flex: 1,
-          justifyContent: 'space-around',
-          alignItems: 'center',
-          height: 70,
-          fontSize: 13,
-        }}
-      >
-        {tabs.map((tab) => (
-          <>
+    <Media queries={GLOBAL_MEDIA_QUERIES}>
+      {(matches) =>
+        matches.small && (
+          <div
+            style={{
+              position: 'fixed',
+              bottom: 0,
+              width: '100%',
+              backgroundColor: '#fff',
+              boxShadow: '0px 0px 8px #888',
+            }}
+          >
             <div
               style={{
                 display: 'flex',
-                flexDirection: 'column',
-                width: '100%',
+                flex: 1,
                 justifyContent: 'space-around',
                 alignItems: 'center',
-                cursor: 'pointer',
+                height: 70,
+                fontSize: 13,
               }}
             >
-              {tab.icon}
-              {tab.title}
+              {tabs.map((tab) => (
+                <>
+                  <BottomBarItem>
+                    {tab.icon}
+                    {tab.title}
+                  </BottomBarItem>
+                </>
+              ))}
             </div>
-          </>
-        ))}
-      </div>
-    </div>
+          </div>
+        )
+      }
+    </Media>
   )
 }
 
