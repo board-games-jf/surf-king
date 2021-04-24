@@ -23,6 +23,7 @@ conduct](CODE_OF_CONDUCT.md).
 - [Node](https://nodejs.org/en/) 14
 - [React](https://pt-br.reactjs.org/)
 - [TypeScript](https://www.typescriptlang.org/)
+- [python](https://www.python.org/) 3
 
 ## Ports and endpoints
 
@@ -105,9 +106,15 @@ You can follow the documentation on
 
 ## Submit a pull request
 
-- go to a new branch `git checkout -b feat/my-feature`
+- go to a new branch
+```bash
+git checkout -b feat/my-feature
+```
 - make your changes
-- run tests and linter again `yarn linter`
+- run tests and linter again 
+```bash
+yarn linter
+```
 - Push your branch to [`surf-king`](https://github.com/board-games-jf/surf-king) repository
 - Open PR against the main branch. 🏄
 
