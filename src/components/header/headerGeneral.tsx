@@ -14,13 +14,13 @@ import Space from '../space/style'
 
 const { Option } = Select
 
-interface IProps {
+interface HeaderGeneralProps {
   onSelectLocale: (value: valueType) => void
   onSignInClicked: () => void
   onSignOutClicked: () => void
 }
 
-const HeaderGeneral: FC<IProps> = (props): JSX.Element => {
+const HeaderGeneral: FC<HeaderGeneralProps> = (props): JSX.Element => {
   const [session] = useSession()
 
   const userImage = session?.user?.image

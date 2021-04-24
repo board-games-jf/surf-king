@@ -1,3 +1,4 @@
+import { FC } from 'react'
 import { Button, Image } from 'antd'
 import { intlValue, PLAY_MODE_LOCAL, PLAY_MODE_ONLINE } from '../../internationalization'
 import Space from '../space/style'
@@ -8,7 +9,7 @@ interface PlayModeButtonProps {
   mode: 'local' | 'online'
 }
 
-const PlayModeButton = (props: PlayModeButtonProps): JSX.Element => {
+const PlayModeButton: FC<PlayModeButtonProps> = (props): JSX.Element => {
   const { small, mode } = props
 
   return (
