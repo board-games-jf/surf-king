@@ -45,9 +45,9 @@ const HeaderGeneral: FC<IProps> = (props): JSX.Element => {
       <Row>
         <Col span={5}>
           <LogoArea>
-              <Image src="/media/logo.png" width={100} preview={false} />
-              <Space value={8} />
-              <h2>Surf King</h2>
+            <Image src="/media/logo.png" width={100} preview={false} />
+            <Space value={8} />
+            <h2>Surf King</h2>
           </LogoArea>
         </Col>
 
