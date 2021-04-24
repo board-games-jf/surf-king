@@ -5,7 +5,7 @@ const HeaderSmall = (): JSX.Element => {
   return (
     <EllipseBackground>
       <h1>Surf</h1>
-      <Image src="/media/logo.png" width={100} />
+      <Image src="/media/logo.png" width={100} preview={false} />
       <h1>King</h1>
     </EllipseBackground>
   )

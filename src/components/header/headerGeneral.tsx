@@ -10,6 +10,7 @@ import { UserOutlined } from '@ant-design/icons'
 
 import { HeaderContent, LoginArea, LogoArea } from './styles'
 import actions from '../../app-constants/actions'
+import Space from '../space/style'
 
 const { Option } = Select
 
@@ -44,8 +45,9 @@ const HeaderGeneral: FC<IProps> = (props): JSX.Element => {
       <Row>
         <Col span={5}>
           <LogoArea>
-            <Image src="/media/logo.png" width={100} preview={false} />
-            <h2>Surf King</h2>
+              <Image src="/media/logo.png" width={100} preview={false} />
+              <Space value={8} />
+              <h2>Surf King</h2>
           </LogoArea>
         </Col>
 
@@ -76,7 +78,8 @@ const HeaderGeneral: FC<IProps> = (props): JSX.Element => {
                 {!userImage && <Avatar style={{ background: '#CCCCCC' }} size={40} icon={<UserOutlined />} />}
                 {userImage && <Avatar size={40} src={<Image src={userImage} preview={false} />} />}
 
-                <div style={{ marginRight: 8 }}></div>
+                <Space value={8} />
+
                 <Link href="/api/auth/sgnout">
                   <Button type="primary" shape="round" onClick={props.onSignOutClicked}>
                     {intlValue(AUTHENTICATION_SIGNOUT)}
@@ -85,7 +88,7 @@ const HeaderGeneral: FC<IProps> = (props): JSX.Element => {
               </>
             )}
 
-            <div style={{ marginRight: 8 }}></div>
+            <Space value={8} />
 
             {renderLocaleSelector()}
           </LoginArea>
