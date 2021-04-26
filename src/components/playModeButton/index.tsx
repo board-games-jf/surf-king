@@ -5,12 +5,12 @@ import Space from '../space/style'
 import { buttonContentStyle, buttonSmallContentStyle, buttonSmallStyle, buttonStyle } from './style'
 
 interface PlayModeButtonProps {
-  small: boolean
+  small?: boolean
   mode: 'local' | 'online'
 }
 
 const PlayModeButton: FC<PlayModeButtonProps> = (props): JSX.Element => {
-  const { small, mode } = props
+  const { small = false, mode } = props
 
   return (
     <Button style={small ? buttonSmallStyle : buttonStyle} type="primary" shape="round">
