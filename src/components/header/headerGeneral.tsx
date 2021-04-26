@@ -46,7 +46,7 @@ const HeaderGeneral: FC<HeaderGeneralProps> = (props): JSX.Element => {
         <Col span={5}>
           <LogoArea>
             <Image src="/media/logo.png" width={100} preview={false} />
-            <Space value={8} />
+            <Space />
             <h2>Surf King</h2>
           </LogoArea>
         </Col>
@@ -78,7 +78,7 @@ const HeaderGeneral: FC<HeaderGeneralProps> = (props): JSX.Element => {
                 {!userImage && <Avatar style={{ background: '#CCCCCC' }} size={40} icon={<UserOutlined />} />}
                 {userImage && <Avatar size={40} src={<Image src={userImage} preview={false} />} />}
 
-                <Space value={8} />
+                <Space />
 
                 <Link href="/api/auth/sgnout">
                   <Button type="primary" shape="round" onClick={props.onSignOutClicked}>
@@ -88,7 +88,7 @@ const HeaderGeneral: FC<HeaderGeneralProps> = (props): JSX.Element => {
               </>
             )}
 
-            <Space value={8} />
+            <Space />
 
             {renderLocaleSelector()}
           </LoginArea>

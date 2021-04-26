@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 
 type Props = {
-  value: number
+  value?: number
 }
 
 const Space = styled.div<Props>((props) => ({
