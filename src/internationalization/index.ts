@@ -46,12 +46,26 @@ export const loadLanguage = async (): Promise<boolean> => {
   return ok
 }
 
+export const intlValue = (key: string): string => {
+  return intl.get(key)
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// Authentication
+////////////////////////////////////////////////////////////////////////////////
 export const AUTHENTICATION_SIGNIN = 'authentication.signin'
 export const AUTHENTICATION_SIGNOUT = 'authentication.signout'
 
-export const intlAuthenticationSignIn = (): string => {
-  return intl.get(AUTHENTICATION_SIGNIN)
-}
-export const intlAuthenticationSignOut = (): string => {
-  return intl.get(AUTHENTICATION_SIGNOUT)
-}
+////////////////////////////////////////////////////////////////////////////////
+// Play Mode
+////////////////////////////////////////////////////////////////////////////////
+export const PLAY_MODE_LOCAL = 'play.mode.local'
+export const PLAY_MODE_ONLINE = 'play.mode.online'
+
+////////////////////////////////////////////////////////////////////////////////
+// Titles
+////////////////////////////////////////////////////////////////////////////////
+export const TITLE_EVENTS = 'title.events'
+export const TITLE_BATTLE = 'title.battle'
+export const TITLE_RANKING = 'title.ranking'
+export const TITLE_PROFILE = 'title.profile'

@@ -1,7 +1,9 @@
-import '../styles/globals.css'
+// import '../styles/globals.css'
 import { ReactNode } from 'react'
 import { Provider } from 'next-auth/client'
 import { AppProps } from 'next/dist/next-server/lib/router/router'
+
+import '../styles/antd-custom.less'
 
 const App = ({ Component, pageProps }: AppProps): ReactNode => {
   const { session } = pageProps

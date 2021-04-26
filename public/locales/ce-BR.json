@@ -1,4 +1,10 @@
 {
     "authentication.signin": "Entrar",
-    "authentication.signout": "Vambora"
+    "authentication.signout": "Sair",
+    "play.mode.local": "Modo local",
+    "play.mode.online": "Modo online",
+    "title.battle": "Briga",
+    "title.events": "Eventos",
+    "title.profile": "Perfil",
+    "title.ranking": "Troféus"
 }

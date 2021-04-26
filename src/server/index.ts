@@ -1,5 +1,5 @@
 import { Server } from 'boardgame.io/server'
-import { DEFAULT_LOBBY_PORT, DEFAULT_SERVER_PORT } from '../config'
+import { DEFAULT_LOBBY_PORT, DEFAULT_SERVER_PORT } from '../app-constants'
 
 import { SurfKingGame } from '../game'
 

@@ -1,6 +1,6 @@
 import NextAuth from 'next-auth'
 import Providers from 'next-auth/providers'
-import { DEFAULT_EMAIL_FROM, DEFAULT_NEXTAUTH_URL, DEFAULT_POSTGRES_HOST } from '../../../config'
+import { DEFAULT_EMAIL_FROM, DEFAULT_NEXTAUTH_URL, DEFAULT_POSTGRES_HOST } from '../../../app-constants'
 
 const options = {
     debug: true,
