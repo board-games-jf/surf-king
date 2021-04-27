@@ -1,8 +1,8 @@
 import { FC } from 'react'
 import { Button, Image } from 'antd'
 import { intlValue, PLAY_MODE_LOCAL, PLAY_MODE_ONLINE } from '../../internationalization'
-import Space from '../space/style'
-import { buttonContentStyle, buttonSmallContentStyle, buttonSmallStyle, buttonStyle } from './style'
+import Space from '../space/styles'
+import { buttonContentStyle, buttonSmallContentStyle, buttonSmallStyle, buttonStyle } from './styles'
 
 interface PlayModeButtonProps {
   small?: boolean

@@ -10,7 +10,7 @@ import { UserOutlined } from '@ant-design/icons'
 
 import { HeaderContent, LoginArea, LogoArea } from './styles'
 import actions from '../../app-constants/actions'
-import Space from '../space/style'
+import Space from '../space/styles'
 
 const { Option } = Select
 
