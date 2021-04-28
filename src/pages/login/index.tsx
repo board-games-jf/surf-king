@@ -1,7 +1,7 @@
 import { Col, Row } from 'antd'
 import Image from 'next/image'
 import Media from 'react-media'
-import { GLOBAL_MEDIA_QUERIES } from '../../app-constants'
+import { GLOBAL_MEDIA_QUERIES } from '../../app-constants/media'
 import PlayModeButton from '../../components/playModeButton'
 
 const Login = (): JSX.Element => {

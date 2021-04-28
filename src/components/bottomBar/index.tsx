@@ -2,7 +2,7 @@ import { useSession } from 'next-auth/client'
 import { BottomBarItem } from './styles'
 import actions from '../../app-constants/actions'
 import Media from 'react-media'
-import { GLOBAL_MEDIA_QUERIES } from '../../app-constants'
+import { GLOBAL_MEDIA_QUERIES } from '../../app-constants/media'
 
 const BottomBar = (): JSX.Element => {
   const [session] = useSession()
