@@ -25,13 +25,13 @@ const setup = (): G => {
 
   // TODO: set player postions according to number of players.
   for (let i = 0; i < 2; ++i) {
-    cells[i + 2] = { position: i + 2, obstacle: undefined, player: players[order[i]] }
+    cells[i + 1] = { position: i + 1, obstacle: undefined, player: players[order[i]] }
   }
 
+  cells[28] = { position: 28, obstacle: SharkObstacle, player: undefined }
   cells[29] = { position: 29, obstacle: SharkObstacle, player: undefined }
   cells[30] = { position: 30, obstacle: SharkObstacle, player: undefined }
   cells[31] = { position: 31, obstacle: SharkObstacle, player: undefined }
-  cells[32] = { position: 32, obstacle: SharkObstacle, player: undefined }
   for (let i = 0; i < GRID_SIZE; ++i) {
     if (!cells[i]) {
       cells[i] = { position: i, obstacle: undefined, player: undefined }

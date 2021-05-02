@@ -1,14 +1,16 @@
 import { FC, ReactNode } from 'react'
 import Space from '../space/styles'
 import HaxagonGridRow from './styles'
-import Hexagon from './hexagon'
+import { G } from '../../game'
+import { HexagonCell } from '.'
 
-interface IProps {
+interface Props {
+  G: G
   size: number
   space: number
 }
 
-const HexagonGrid: FC<IProps> = (props): JSX.Element => {
+const HexagonGrid: FC<Props> = (props): JSX.Element => {
   const { size, space } = props
 
   const gridMap: { [key: number]: { items: string[] } } = {
@@ -62,14 +64,21 @@ const HexagonGrid: FC<IProps> = (props): JSX.Element => {
   const renderGrid = (size: number, space: number): ReactNode => {
     let spaceKey = 1
     let rowKey = 1
-    let hexagonKey = 1
+    let hexagonKey = 0
     const rows = Object.keys(gridMap).map((key) => (
       <HaxagonGridRow key={'row_' + rowKey++} first={key === '1'} space={key === '1' ? 0 : -space}>
         {gridMap[Number(key)].items.map((item: string) => {
           if (item === 'S') {
             return <Space key={'space_' + spaceKey++} value={space} />
           }
-          return <Hexagon key={'hexagon_' + hexagonKey++} size={size} type={item === 'HE' ? 'end' : 'normal'} />
+          return (
+            <HexagonCell
+              key={'hexagon_' + (hexagonKey + 1)}
+              cell={props.G.cells[hexagonKey++]}
+              size={size}
+              type={item === 'HE' ? 'end' : 'normal'}
+            />
+          )
         })}
       </HaxagonGridRow>
     ))
