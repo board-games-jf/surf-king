@@ -2,10 +2,8 @@ import { Col, Row } from 'antd'
 import { BoardProps } from 'boardgame.io/react'
 import { useSession } from 'next-auth/client'
 import { useRouter } from 'next/router'
-import { FC, Fragment } from 'react'
 import Media from 'react-media'
 import { TransformComponent, TransformWrapper } from 'react-zoom-pan-pinch'
-import { G } from '../../game'
 import HexagonGrid from './hexagonGrid'
 
 interface ZoomProps {
@@ -14,26 +12,30 @@ interface ZoomProps {
   resetTransform: () => number
 }
 
-interface Props extends BoardProps {
-  G: G
-}
-
-const Board: FC<Props> = (props): JSX.Element => {
+const Board = ({ G, moves }: BoardProps): JSX.Element => {
   const [session] = useSession()
   const router = useRouter()
 
   const { id } = router.query
 
+  const onHexagonClickedHandle = (): void => {
+    moves.placeObstacule(19, { name: 'teste' })
+  }
+
+  const MenuButtons = ({ zoomIn, zoomOut, resetTransform }: ZoomProps): JSX.Element => (
+    <div>
+      <button onClick={zoomIn}>+</button>
+      <button onClick={zoomOut}>-</button>
+      <button onClick={resetTransform}>x</button>
+    </div>
+  )
+
   const renderResponsiveMenu = ({ zoomIn, zoomOut, resetTransform }: ZoomProps): JSX.Element => {
     return (
-      <>
+      <div>
         Menu - {id}
-        <div>
-          <button onClick={zoomIn}>+</button>
-          <button onClick={zoomOut}>-</button>
-          <button onClick={resetTransform}>x</button>
-        </div>
-      </>
+        <MenuButtons zoomIn={zoomIn} zoomOut={zoomOut} resetTransform={resetTransform} />
+      </div>
     )
   }
 
@@ -41,11 +43,7 @@ const Board: FC<Props> = (props): JSX.Element => {
     return (
       <div style={{ position: 'fixed', top: 0, right: 0, display: 'flex', height: '100vh', border: '1px solid blue' }}>
         Menu - {id}
-        <div>
-          <button onClick={zoomIn}>+</button>
-          <button onClick={zoomOut}>-</button>
-          <button onClick={resetTransform}>x</button>
-        </div>
+        <MenuButtons zoomIn={zoomIn} zoomOut={zoomOut} resetTransform={resetTransform} />
       </div>
     )
   }
@@ -75,7 +73,7 @@ const Board: FC<Props> = (props): JSX.Element => {
               >
                 <div>
                   <TransformComponent>
-                    <HexagonGrid G={props.G} size={size} space={space} />
+                    <HexagonGrid cells={G.cells} size={size} space={space} onHexagonClick={onHexagonClickedHandle} />
                   </TransformComponent>
                 </div>
               </Col>

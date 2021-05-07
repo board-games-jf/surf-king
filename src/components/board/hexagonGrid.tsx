@@ -1,17 +1,18 @@
-import { FC, ReactNode } from 'react'
+import { FC, MouseEventHandler, ReactNode } from 'react'
 import Space from '../space/styles'
 import HaxagonGridRow from './styles'
-import { G } from '../../game'
 import { HexagonCell } from '.'
+import { Cell } from '../../game/Board'
 
 interface Props {
-  G: G
+  cells: Cell[]
   size: number
   space: number
+  onHexagonClick: () => void
 }
 
 const HexagonGrid: FC<Props> = (props): JSX.Element => {
-  const { size, space } = props
+  const { cells, size, space, onHexagonClick } = props
 
   const gridMap: { [key: number]: { items: string[] } } = {
     1: {
@@ -74,7 +75,7 @@ const HexagonGrid: FC<Props> = (props): JSX.Element => {
           return (
             <HexagonCell
               key={'hexagon_' + (hexagonKey + 1)}
-              cell={props.G.cells[hexagonKey++]}
+              cell={cells[hexagonKey++]}
               size={size}
               type={item === 'HE' ? 'end' : 'normal'}
             />
@@ -90,6 +91,7 @@ const HexagonGrid: FC<Props> = (props): JSX.Element => {
           width: '100%',
         }}
       >
+        <button onClick={onHexagonClick}>*</button>
         <div>{rows}</div>
       </div>
     )
