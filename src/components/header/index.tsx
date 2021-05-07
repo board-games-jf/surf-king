@@ -2,7 +2,7 @@ import { signIn, signOut } from 'next-auth/client'
 
 import Media from 'react-media'
 
-import { GLOBAL_MEDIA_QUERIES } from '../../app-constants'
+import { GLOBAL_MEDIA_QUERIES } from '../../app-constants/media'
 
 import { valueType } from 'antd/lib/statistic/utils'
 

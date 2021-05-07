@@ -2,14 +2,14 @@ import { Battle, Events, Profile, Ranking } from './icons'
 import { Avatar, Image } from 'antd'
 import { intlValue, TITLE_BATTLE, TITLE_EVENTS, TITLE_PROFILE, TITLE_RANKING } from '../internationalization'
 
-export interface IAction {
+export interface Action {
   icon: React.ReactNode
   title: string
   name: string
   url: string
 }
 
-const actions = (userImage: string | undefined, iconSize = 32): IAction[] => {
+const actions = (userImage: string | undefined, iconSize = 32): Action[] => {
   return [
     {
       icon: Events(iconSize),
