@@ -2,7 +2,7 @@ import { Col, Row } from 'antd'
 import { BoardProps } from 'boardgame.io/react'
 import { useSession } from 'next-auth/client'
 import { useRouter } from 'next/router'
-import { FC } from 'react'
+import { FC, Fragment } from 'react'
 import Media from 'react-media'
 import { TransformComponent, TransformWrapper } from 'react-zoom-pan-pinch'
 import { G } from '../../game'
@@ -104,14 +104,18 @@ const Board: FC<Props> = (props): JSX.Element => {
             xlarge: '(min-width: 1920px)',
           }}
         >
-          {(matches) => (
-            <>
-              {matches.small && render(24, 0, 80, 46)}
-              {matches.medium && render(16, 4, 90, 51)}
-              {matches.large && render(12, 6, 100, 56)}
-              {matches.xlarge && render(12, 6, 110, 61)}
-            </>
-          )}
+          {(matches) => {
+            if (matches.small) {
+              return render(24, 0, 80, 46)
+            }
+            if (matches.medium) {
+              return render(16, 4, 90, 51)
+            }
+            if (matches.large) {
+              return render(12, 6, 100, 56)
+            }
+            return render(12, 6, 110, 61)
+          }}
         </Media>
       )}
     </>
