@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import React, { FC } from 'react'
 import { Cell } from '../../game/Board'
 
 interface Props {
@@ -7,26 +7,33 @@ interface Props {
   type: 'normal' | 'end'
 }
 
-const HexagonCell: FC<Props> = (props): JSX.Element => {
-  const { cell: data, size, type } = props
-  const bgImg = type === 'end' ? 'url(/media/board/hexagon-end.png)' : 'url(/media/board/hexagon.png)'
+class HexagonCell extends React.Component<Props & React.HTMLProps<HTMLButtonElement>> {
+  render(): JSX.Element {
+    const { cell: data, size, type } = this.props
+    const bgImg = type === 'end' ? 'url(/media/board/hexagon-end.png)' : 'url(/media/board/hexagon.png)'
+    return (
+      <button
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          backgroundImage: bgImg,
+          backgroundSize: size,
+          width: size,
+          height: size,
 
-  return (
-    <div
-      style={{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundImage: bgImg,
-        backgroundSize: size,
-        width: size,
-        height: size,
-      }}
-    >
-      {data.obstacle && <span>{data.obstacle?.name}</span>}
-      {data.player && <span>{data.player?.position}</span>}
-    </div>
-  )
+          backgroundColor: 'transparent',
+          border: 0,
+          padding: 0,
+          margin: 0,
+        }}
+        onClick={this.props.onClick}
+      >
+        {data.obstacle && <span>{data.obstacle?.name}</span>}
+        {data.player && <span>{data.player?.position}</span>}
+      </button>
+    )
+  }
 }
 
 export default HexagonCell

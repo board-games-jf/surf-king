@@ -18,6 +18,7 @@ export interface Player {
   cards: Array<Card>
   position: Position
   played: boolean
+  cellPosition: number
 }
 
 /** Represents the kind of event. */

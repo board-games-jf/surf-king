@@ -4,6 +4,8 @@ import { useSession } from 'next-auth/client'
 import { useRouter } from 'next/router'
 import Media from 'react-media'
 import { TransformComponent, TransformWrapper } from 'react-zoom-pan-pinch'
+import { Cell } from '../../game/Board'
+import { SharkObstacle } from '../../game/Obstacle'
 import HexagonGrid from './hexagonGrid'
 
 interface ZoomProps {
@@ -12,14 +14,23 @@ interface ZoomProps {
   resetTransform: () => number
 }
 
-const Board = ({ G, moves }: BoardProps): JSX.Element => {
+const Board = ({ G, ctx, moves }: BoardProps): JSX.Element => {
   const [session] = useSession()
   const router = useRouter()
 
   const { id } = router.query
 
-  const onHexagonClickedHandle = (): void => {
-    moves.placeObstacule(19, { name: 'teste' })
+  const onHexagonClickedHandle = (cell: Cell): void => {
+    // TODO: Check if the player who is playing can make the move.
+    console.log(G, ctx)
+    if (G.turn === 0) {
+      moves.placeObstacule(cell.position, SharkObstacle)
+    } else if (G.turn === 1) {
+      const currentPlayer: number = +ctx.currentPlayer
+      moves.movePiece(G.players[currentPlayer].cellPosition, cell.position)
+    } else {
+      // TODO: Implements
+    }
   }
 
   const MenuButtons = ({ zoomIn, zoomOut, resetTransform }: ZoomProps): JSX.Element => (

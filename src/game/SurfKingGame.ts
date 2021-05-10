@@ -9,7 +9,7 @@ const createPlayer = (position: Position): Player => {
   const cards = new Array<Card>()
   // TODO: will receive 2 random cards
   cards.push(...Array(2).fill(SharkCard))
-  return { position, cards, played: false }
+  return { position, cards, played: false, cellPosition: -1 }
 }
 
 const setup = (): G => {
@@ -25,6 +25,7 @@ const setup = (): G => {
 
   // TODO: set player postions according to number of players.
   for (let i = 0; i < 2; ++i) {
+    players[order[i]].cellPosition = i + 1
     cells[i + 1] = { position: i + 1, obstacle: undefined, player: players[order[i]] }
   }
 
@@ -44,6 +45,7 @@ const setup = (): G => {
 }
 
 const placeObstacule = (G: G, ctx: Ctx, position: number, obstacle: Obstacle): void => {
+  // TODO: Validate
   G.cells[position].obstacle = obstacle
   G.players[ctx.currentPlayer].played = true
 }
@@ -53,6 +55,7 @@ const movePiece = (G: G, ctx: Ctx, from: number, to: number): void => {
   G.cells[to].player = G.cells[from].player
   G.cells[from].player = undefined
   G.players[ctx.currentPlayer].played = true
+  G.players[ctx.currentPlayer].cellPosition = to
 }
 
 const resetPlayerPlayed = (G: G): void => {

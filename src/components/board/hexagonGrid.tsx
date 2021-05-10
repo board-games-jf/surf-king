@@ -1,4 +1,4 @@
-import { FC, MouseEventHandler, ReactNode } from 'react'
+import { FC, ReactNode } from 'react'
 import Space from '../space/styles'
 import HaxagonGridRow from './styles'
 import { HexagonCell } from '.'
@@ -8,7 +8,7 @@ interface Props {
   cells: Cell[]
   size: number
   space: number
-  onHexagonClick: () => void
+  onHexagonClick: (cell: Cell) => void
 }
 
 const HexagonGrid: FC<Props> = (props): JSX.Element => {
@@ -72,9 +72,11 @@ const HexagonGrid: FC<Props> = (props): JSX.Element => {
           if (item === 'S') {
             return <Space key={'space_' + spaceKey++} value={space} />
           }
+          const position = hexagonKey
           return (
             <HexagonCell
               key={'hexagon_' + (hexagonKey + 1)}
+              onClick={() => onHexagonClick(cells[position])}
               cell={cells[hexagonKey++]}
               size={size}
               type={item === 'HE' ? 'end' : 'normal'}
@@ -91,7 +93,6 @@ const HexagonGrid: FC<Props> = (props): JSX.Element => {
           width: '100%',
         }}
       >
-        <button onClick={onHexagonClick}>*</button>
         <div>{rows}</div>
       </div>
     )
